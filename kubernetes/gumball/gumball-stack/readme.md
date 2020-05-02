@@ -318,9 +318,9 @@ db.gumball.find( { Id: 1 } ) ;
 
 rabbitmqadmin -u rabbit -p <password> -H <host-ip-address> -P 15672 list queues name node messages
 
-export host=10.81.11.48 
+export host=10.97.15.61 
 export host=rabbitmq-rabbitmq-svc
-export passwd=ZracSMjs9k8b
+export passwd=uDrvDFE76PSm
 
 rabbitmqadmin -u rabbit -p $passwd -H $host -P 15672 list queues name node messages
 
@@ -356,9 +356,7 @@ kubectl logs --namespace gumball $pod
 curl localhost:3000/ping
 curl localhost:3000/gumball
 
-curl -X POST \
-  http://localhost:3000/order \
-  -H 'Content-Type: application/json'
+curl -X POST http://localhost:3000/order -H 'Content-Type: application/json'
 
 curl -X GET \
   http://localhost:3000/order \
@@ -382,9 +380,7 @@ export host=<public-id>
 curl $host:9000/ping
 curl $host:9000/gumball
 
-curl -X POST \
-  http://$host:9000/order \
-  -H 'Content-Type: application/json'
+curl -X POST http://$host:9000/order -H 'Content-Type: application/json'
 
 curl -X GET \
   http://$host:9000/order \

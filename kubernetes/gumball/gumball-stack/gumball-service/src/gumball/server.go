@@ -58,14 +58,14 @@ func init() {
 		rabbitmq_user = "guest"
 		rabbitmq_pass = "guest"
     case "GKE":
-    	mongodb_server = "mongodb://admin:cmpe281@10.138.0.9:27017/cmpe281"
+    	mongodb_server = "mongodb://admin:cmpe281@10.138.0.2:27017/cmpe281"
 		mongodb_database = "cmpe281"
 		mongodb_collection = "gumball"
 		rabbitmq_server = "rabbitmq-rabbitmq-svc"
 		rabbitmq_port = "5672"
 		rabbitmq_queue = "gumball"
 		rabbitmq_user = "rabbit"
-		rabbitmq_pass = "ZracSMjs9k8b"
+		rabbitmq_pass = "uDrvDFE76PSm"
     }
 }
 
@@ -284,7 +284,7 @@ func queue_send(message string) {
 			ContentType: "text/plain",
 			Body:        []byte(body),
 		})
-	log.Printf(" [x] Sent %s", body)
+	fmt.Println(" [x] Sent %s", body)
 	failOnError(err, "Failed to publish a message")
 }
 

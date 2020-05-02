@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gumball-api-deployment
+  namespace: gumball
+spec:
+  selector:
+    matchLabels:
+      name: gumball-api
+  replicas: 5 
+  template: 
+    metadata:
+      # unlike pod.yaml, the name is not included in the meta data as a unique name is
+      # generated from the deployment name
+      labels:
+        name: gumball-api
+    spec:
+      containers:
+      - name: gumball-api
+        image: paulnguyen/gumball-api:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: mongodb_server
+          value: "mongodb://admin:cmpe281@10.138.0.2:27017/cmpe281"
+        - name: mongodb_database
+          value: "cmpe281"
+        - name: mongodb_collection
+          value: "gumball"
+        - name: redis_connect
+          value: "10.97.8.105:6379"

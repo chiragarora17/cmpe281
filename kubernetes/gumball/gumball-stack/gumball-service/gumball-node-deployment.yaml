@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gumball-node-deployment
+  namespace: gumball
+spec:
+  selector:
+    matchLabels:
+      name: gumball-node
+  replicas: 2 
+  template: 
+    metadata:
+      # unlike pod.yaml, the name is not included in the meta data as a unique name is
+      # generated from the deployment name
+      labels:
+        name: gumball-node
+    spec:
+      containers:
+      - name: gumball-node
+        image: paulnguyen/gumball-node:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: gumball_endpoint
+          value: "http://10.97.4.4:9000/gumball"
+        - name: order_endpoint
+          value: "http://10.97.4.4:9000/order"
